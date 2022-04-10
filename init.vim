@@ -102,9 +102,6 @@ Plug 'https://github.com/itchyny/lightline.vim'
 " -- INSERT -- is unnecessary since the mode information is displayed in the statusline
 set noshowmode
 
-" set lighline theme inside lightline config
-" let g:lightline = { 'enable': { 'tabline': 0, 'statusline': 1 }, 'colorscheme': 'tender' }
-
 let g:lightline = {
 \ 'enable' :{
 \   'tabline': 0,
@@ -116,6 +113,7 @@ let g:lightline = {
 " -------
 " Editing
 " -------
+" complete bullet list on newline & renumber numeric lists `:RenumberSelection`
 Plug 'dkarter/bullets.vim'
 let g:bullets_enabled_file_types = [
     \ 'markdown',
@@ -151,10 +149,10 @@ nnoremap <leader>w :bp <BAR> bd #<CR>
 nnoremap <leader>b :Buffers!<CR>
 nnoremap <leader>t :Buffers!<CR>
 
-" https://github.com/junegunn/fzf.vim#using-vim-plug
-" https://github.com/junegunn/fzf.vim#commands
-" Plug 'https://github.com/junegunn/fzf.vim'
-Plug 'https://github.com/junegunn/fzf', { 'do': './install --bin' }
+" https://pythonawesome.com/a-neovim-plugin-to-make-the-lsp-client-use-fzf/
+Plug 'junegunn/fzf', {'do': {-> fzf#install()}}
+Plug 'junegunn/fzf.vim'  " to enable preview (optional)
+Plug 'ojroques/nvim-lspfuzzy', {'branch': 'main'}
 
 " relative file completion
 Plug 'thezeroalpha/vim-relatively-complete'
@@ -228,7 +226,7 @@ Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'https://github.com/airblade/vim-gitgutter'
 
 " -------
-" Systenm Copy
+" System Copy
 " -------
 Plug 'https://github.com/christoomey/vim-system-copy'
 " press CTRL+p to paste system clipboard contents to next line.
@@ -237,7 +235,6 @@ nmap <C-p> cv
 " -------
 " Ranger file exploration
 " > brew install ranger
-" todo: replace ranger with something more minimal or even fzf-like
 " -------
 " press `<leader>f` to open ranger file explorer.
 Plug 'rbgrouleff/bclose.vim' | Plug 'francoiscabrol/ranger.vim'
@@ -247,6 +244,7 @@ let g:ranger_replace_netrw = 1
 " -------
 " Search
 " -------
+" :Ag <term>
 Plug 'https://github.com/mileszs/ack.vim'
 
 " -------
